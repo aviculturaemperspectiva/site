@@ -1,0 +1,222 @@
+/*======================================
+  MAPA - Especialização Avícola por Município
+  Paleta e tokens extraídos de css/style.css para manter consistência
+  visual com o resto do site (Avicultura em Perspectiva).
+======================================*/
+
+:root {
+  --mapa-accent: #d91e00;       /* mesma cor de destaque do site */
+  --mapa-accent-dark: #951703;  /* variação mais escura, usada em hover/estados ativos */
+  --mapa-ink: #1e1e1e;          /* mesma cor de títulos do site (h1-h6) */
+  --mapa-text: #4e4e4e;         /* mesma cor de texto do site */
+  --mapa-bg: #f5f5f5;           /* mesmo fundo do body do site */
+  --mapa-card-bg: #fff;
+  --mapa-border: #e3e3e3;
+  --mapa-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.06), 0 2px 5px 0 rgba(0, 0, 0, 0.2);
+}
+
+.mapa-mf .box-shadow-full {
+  padding-top: 2.5rem;
+  padding-bottom: 3rem;
+}
+
+.mapa-mf .mapa-intro {
+  margin-bottom: 2rem;
+}
+
+.mapa-mf .mapa-intro p.lead {
+  color: var(--mapa-text);
+  max-width: 70ch;
+}
+
+/* Reaproveita o padrão de título do site: barra vermelha embaixo do texto */
+.mapa-mf .title-left {
+  font-size: 1.8rem;
+  position: relative;
+  color: var(--mapa-ink);
+}
+
+.mapa-mf .title-left:before {
+  content: '';
+  position: absolute;
+  height: 3px;
+  background-color: var(--mapa-accent);
+  width: 100px;
+  bottom: -12px;
+}
+
+.mapa-mf .title-box-2 {
+  margin-bottom: 3rem;
+}
+
+/* --- Toolbar de filtros --- */
+.mapa-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  margin: 0 0 1.5rem;
+  background: var(--mapa-card-bg);
+  border: 1px solid var(--mapa-border);
+  padding: 14px 16px;
+  box-shadow: var(--mapa-shadow);
+}
+
+.mapa-toolbar label {
+  font-size: .75rem;
+  font-weight: 600;
+  color: var(--mapa-text);
+  text-transform: uppercase;
+  letter-spacing: .03em;
+  margin-right: 4px;
+}
+
+.mapa-toolbar select {
+  font-family: inherit;
+  font-size: .9rem;
+  padding: 7px 10px;
+  border: 1px solid var(--mapa-border);
+  background: #fff;
+  color: var(--mapa-ink);
+  cursor: pointer;
+}
+
+.mapa-toolbar select:focus-visible,
+.mapa-toolbar button:focus-visible {
+  outline: 2px solid var(--mapa-accent);
+  outline-offset: 1px;
+}
+
+.mapa-toolbar button {
+  font-family: inherit;
+  font-size: .85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .02em;
+  padding: 8px 16px;
+  border: 1px solid var(--mapa-accent);
+  background: var(--mapa-accent);
+  color: #fff;
+  cursor: pointer;
+  transition: all .3s ease;
+}
+
+.mapa-toolbar button:hover {
+  background: var(--mapa-accent-dark);
+  border-color: var(--mapa-accent-dark);
+}
+
+.mapa-toolbar .status {
+  margin-left: auto;
+  font-size: .8rem;
+  color: var(--mapa-text);
+}
+
+/* --- Mapa --- */
+#mapa-wrap {
+  position: relative;
+  border: 1px solid var(--mapa-border);
+  box-shadow: var(--mapa-shadow);
+}
+
+#mapa {
+  height: 640px;
+  width: 100%;
+  background: #eceae4;
+}
+
+#mapa-loading-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(245, 245, 245, 0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .95rem;
+  color: var(--mapa-text);
+  z-index: 1000;
+}
+
+/* --- Tooltip do município (Leaflet) --- */
+.leaflet-tooltip.mun-tooltip {
+  background: var(--mapa-card-bg);
+  border: 1px solid var(--mapa-border);
+  box-shadow: var(--mapa-shadow);
+  padding: 10px 12px;
+  font-family: inherit;
+  color: var(--mapa-ink);
+  line-height: 1.5;
+  max-width: 260px;
+  border-radius: 0;
+}
+
+.mun-tooltip .t-title {
+  font-weight: 700;
+  font-size: .95rem;
+  margin-bottom: 2px;
+  color: var(--mapa-ink);
+}
+
+.mun-tooltip .t-sub {
+  color: var(--mapa-text);
+  font-size: .78rem;
+  margin-bottom: 8px;
+}
+
+.mun-tooltip .t-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  font-size: .82rem;
+  padding: 2px 0;
+}
+
+.mun-tooltip .t-row .t-label { color: var(--mapa-text); }
+.mun-tooltip .t-row .t-value { font-weight: 600; font-variant-numeric: tabular-nums; color: var(--mapa-ink); }
+
+.mun-tooltip .t-lq {
+  margin-top: 6px;
+  padding-top: 6px;
+  border-top: 1px dashed var(--mapa-border);
+}
+
+.mun-tooltip .t-lq .t-value { color: var(--mapa-accent); }
+
+/* --- Legenda --- */
+.legend-panel {
+  background: var(--mapa-card-bg);
+  border: 1px solid var(--mapa-border);
+  padding: 10px 12px;
+  box-shadow: var(--mapa-shadow);
+  font-size: .78rem;
+  line-height: 1.6;
+  color: var(--mapa-text);
+}
+
+.legend-panel .legend-title {
+  font-weight: 700;
+  font-size: .78rem;
+  text-transform: uppercase;
+  letter-spacing: .02em;
+  margin-bottom: 6px;
+  color: var(--mapa-ink);
+}
+
+.legend-row { display: flex; align-items: center; gap: 6px; }
+.legend-swatch {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.mapa-footer-note {
+  margin-top: 1rem;
+  font-size: .76rem;
+  color: var(--mapa-text);
+}
+
+@media (max-width: 640px) {
+  #mapa { height: 460px; }
+  .mapa-toolbar .status { margin-left: 0; width: 100%; }
+}
